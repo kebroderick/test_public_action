@@ -1,0 +1,6 @@
+name: 'my_public_action'
+description: 'Test creating action'
+author: 'Scott Tiger'
+runs:
+  using: 'powershell'
+  main: 'my_public_action.ps1'
