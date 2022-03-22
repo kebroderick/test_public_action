@@ -1,6 +1,23 @@
-name: 'my_public_action'
-description: 'Test creating action'
-author: 'Scott Tiger'
+# name: 'dragon_source_deploy'
+# description: 'Deploy Dragon database and file changes to staging environment and production'
+# author: 'kebroderick Allied World'
+# runs:
+#   using: 'powershell'
+#   main: 'dragon_source_deploy.ps1'
+
+# action.yml
+name: 'Hello World'
+description: 'Greet someone and record the time'
+inputs:
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
 runs:
-  using: 'powershell'
-  main: 'my_public_action.ps1'
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.who-to-greet }}
