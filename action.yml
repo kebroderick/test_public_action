@@ -6,18 +6,34 @@
 #   main: 'dragon_source_deploy.ps1'
 
 # action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Generate Diff Command'
+description: 'Create command based from passed params as required'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  build_mode: # id of input
+    description:
     required: true
-    default: 'World'
+    default: 'feature'
+  build_environment: # id of input
+    description:
+    required: true
+    default: 'uat'
+  deploy_diff: # id of input
+    description:
+    required: false
+    default: ''
+  build_refresh_days: # id of input
+    description:
+    required: false
+    default: '14'
+
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  diff_cmd: # id of output
+    description: 'Generated diff command'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.build_mode }}
+    - ${{ inputs.build_environment }}
+    - ${{ inputs.deploy_diff }}
+    - ${{ inputs.build_refresh_days }}
