@@ -23,7 +23,7 @@ git fetch --all --tags
 if [ "$build_mode" == "feature" ]; then
 	git checkout $git_branch
 	git pull
-	diff_cmd="git diff main.. --name-only --diff-filter=d"
+	diff_cmd="git diff main... --name-only --diff-filter=d"
 fi
 
 # On a merge to main deploy the latest commit to UAT
